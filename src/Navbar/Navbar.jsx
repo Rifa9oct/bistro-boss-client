@@ -46,9 +46,9 @@ const Navbar = () => {
                         {navLinks}
                     </ul>
                 </div>
-                <div className="flex items-center">
-                    <img className="h-20 mx-auto md:mx-0" src={logo} />
-                    <h1 className="text-3xl font-bold text-orange-600">BISTRO BOSS</h1>
+                <div className="flex items-center gap-2">
+                    <img className="h-12 mx-auto md:mx-0" src={logo} />
+                    <h1 className="text-3xl font-bold text-orange-600 mt-6">BISTRO BOSS</h1>
                 </div>
             </div>
 
@@ -63,7 +63,6 @@ const Navbar = () => {
                     user ?
                         <div className="flex items-center">
                             <div className="flex items-center">
-                                <p className="block md:hidden text-lg font-semibold">{user.displayName}</p>
                                 {
                                     user.photoURL ?
                                         <img className="w-[50px] h-[50px] mx-3 rounded-full border-[2px]" src={user.photoURL} /> :
@@ -91,9 +90,9 @@ const Navbar = () => {
                                                     </div>
                                                 </div>
                                                 <div className="divider pt-5"></div>
-                                                <div className="flex items-center gap-2 ml-12 pt-4 pb-10">
+                                                <div onClick={handleLogOut} className="flex items-center gap-2 ml-12 pt-4 pb-10 cursor-pointer">
                                                     <LuLogOut className="text-2xl" />
-                                                    <a onClick={handleLogOut} className="font-extrabold cursor-pointer">Sign Out</a>
+                                                    <a className="font-extrabold">Sign Out</a>
                                                 </div>
                                             </div>
 

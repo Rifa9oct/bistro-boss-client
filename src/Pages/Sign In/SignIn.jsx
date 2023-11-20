@@ -65,8 +65,8 @@ const SignIn = () => {
     }
 
     return (
-        <div className="flex items-center gap-20 justify-center mt-7 mb-10">
-            <video className="hidden md:block" autoPlay loop muted>
+        <div className="flex items-center gap-20 justify-center mt-7 mb-10 p-5 lg:p-0">
+            <video className="hidden lg:block" autoPlay loop muted>
                 <source src={video} type="video/mp4" />
             </video>
 
