@@ -126,7 +126,7 @@ const SignIn = () => {
                     </div>
 
                     <div className="form-control mt-6">
-                        <button type="submit" disabled={disable} className="btn text-white border-none bg-gradient-to-r from-cyan-400 to-blue-400 shadow-lg shadow-blue-500/50 hover:bg-gradient-to-r hover:from-cyan-500 hover:to-blue-500">Sign In</button>
+                        <button type="submit" disabled={disable} className="btn text-white bg-gradient-to-r from-cyan-400 to-blue-400 shadow-lg shadow-blue-500/50 hover:bg-gradient-to-r hover:from-cyan-500 hover:to-blue-500">Sign In</button>
                     </div>
                 </form>
 

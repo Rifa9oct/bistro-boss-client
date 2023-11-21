@@ -12,13 +12,13 @@ const Navbar = () => {
 
     const navLinks = <>
         <li> <NavLink to="/" className={({ isActive, isPending }) =>
-            isActive ? "active rounded-lg  text-red-600 underline underline-offset-4 font-semibold" : isPending ? "pending" : ""}>HOME</NavLink>
+            isActive ? "active rounded-lg  text-yellow-300 font-semibold" : isPending ? "pending" : ""}>HOME</NavLink>
         </li>
         <li> <NavLink to="/menu" className={({ isActive, isPending }) =>
-            isActive ? "active rounded-lg  text-red-600 underline underline-offset-4 font-semibold" : isPending ? "pending" : ""}>OUR MENU</NavLink>
+            isActive ? "active rounded-lg  text-yellow-300 font-semibold" : isPending ? "pending" : ""}>OUR MENU</NavLink>
         </li>
         <li> <NavLink to="/shop" className={({ isActive, isPending }) =>
-            isActive ? "active rounded-lg  text-red-600 underline underline-offset-4 font-semibold" : isPending ? "pending" : ""}>OUR SHOP</NavLink>
+            isActive ? "active rounded-lg  text-yellow-300 font-semibold" : isPending ? "pending" : ""}>OUR SHOP</NavLink>
         </li>
     </>
 
@@ -36,7 +36,7 @@ const Navbar = () => {
     }
 
     return (
-        <div className="navbar mb-10 mt-8 flex-col md:flex-row max-w-[1420px] mx-auto">
+        <div className="navbar max-w-[1420px] mx-auto fixed z-10 mb-10 flex-col md:flex-row w-full bg-opacity-30 bg-black px-5">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -47,13 +47,16 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="flex items-center gap-2">
-                    <img className="h-12 mx-auto md:mx-0" src={logo} />
-                    <h1 className="text-3xl font-bold text-orange-600 mt-6">BISTRO BOSS</h1>
+                    <img className="w-[20%] mx-auto md:mx-0" src={logo} />
+                    <div className="text-white mt-3">
+                        <h1 className="text-3xl font-bold">BISTRO BOSS</h1>
+                        <p className="tracking-[9px]">Restaurant</p>
+                    </div>
                 </div>
             </div>
 
             <div className="navbar-center hidden lg:flex">
-                <ul className="text-lg flex gap-8 font-semibold">
+                <ul className="text-white flex gap-8 font-semibold">
                     {navLinks}
                 </ul>
             </div>
@@ -68,9 +71,9 @@ const Navbar = () => {
                                         <img className="w-[50px] h-[50px] mx-3 rounded-full border-[2px]" src={user.photoURL} /> :
                                         <img className="w-[50px] h-[50px] mx-3 rounded-full border-blue-900" src="https://i.ibb.co/VC1vhmp/user.png" />
                                 }
-                                <a onClick={handleLogOut} className="flex items-center md:hidden btn text-bsm bg-gradient-to-r from-blue-500 to-cyan-500 text-white hover:scale-110 transition font-semibold"> <LuLogOut className="text-xl"/>Sign Out</a>
+                                <a onClick={handleLogOut} className="flex items-center md:hidden btn text-bsm bg-gradient-to-r from-blue-500 to-cyan-500 text-white hover:scale-110 transition font-semibold"> <LuLogOut className="text-xl" />Sign Out</a>
                             </div>
-                            
+
                             {/* dropdown signout */}
                             <div className="hidden md:block">
                                 {
