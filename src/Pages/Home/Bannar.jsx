@@ -11,8 +11,8 @@ import img6 from "../../assets/home/06.png"
 const Bannar = () => {
     
     return (
-        <div className="max-w-[1420px] mx-auto">      
-            <Carousel  autoPlay infiniteLoop showArrows={false}>
+        <div className="max-w-[1420px]">      
+            <Carousel  autoPlay infiniteLoop showArrows={false} className="text-center">
                 <div>
                     <img src={img1} />
                 </div>

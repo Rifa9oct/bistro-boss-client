@@ -1,8 +1,8 @@
 import { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import Swal from "sweetalert2";
-import { AuthContext } from "../AuthProvider/AuthContext";
-import logo from "../assets/logo.png"
+import { AuthContext } from "../../../AuthProvider/AuthContext";
+import logo from "../../../assets/logo.png"
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import { LuLogOut } from "react-icons/lu";
 
@@ -36,21 +36,21 @@ const Navbar = () => {
     }
 
     return (
-        <div className="navbar max-w-[1420px] mx-auto fixed z-10 mb-10 flex-col md:flex-row w-full bg-opacity-30 bg-black px-5">
+        <div className="navbar max-w-[1420px] mx-auto fixed z-10 mb-10 flex-col md:flex-row w-full bg-opacity-30 bg-black lg:px-5">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-5 h-5 stroke-current"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-5 h-5 stroke-white"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
                     </label>
                     <ul tabIndex={0} className="flex flex-col gap-4 font-semibold dropdown-content mt-3 z-[1] p-6 py-6 shadow bg-base-100 rounded-box w-52">
                         {navLinks}
                     </ul>
                 </div>
                 <div className="flex items-center gap-2">
-                    <img className="w-[20%] mx-auto md:mx-0" src={logo} />
+                    <img className="w-[30%] md:w-[20%] mx-auto md:mx-0" src={logo} />
                     <div className="text-white mt-3">
-                        <h1 className="text-3xl font-bold">BISTRO BOSS</h1>
-                        <p className="tracking-[9px]">Restaurant</p>
+                        <h1 className="text-xl md:text-3xl font-bold">BISTRO BOSS</h1>
+                        <p className="tracking-[5px] md:tracking-[9px]">Restaurant</p>
                     </div>
                 </div>
             </div>
@@ -79,21 +79,21 @@ const Navbar = () => {
                                 {
                                     dropdown ?
                                         <div>
-                                            <p onClick={() => setDropdown(!dropdown)}><IoIosArrowUp className="text-2xl cursor-pointer" /></p>
-                                            <div className="absolute z-10 top-[120px] right-[60px] w-[320px] border rounded-lg shadow-lg transit">
+                                            <p onClick={() => setDropdown(!dropdown)}><IoIosArrowUp className="text-2xl cursor-pointer text-white" /></p>
+                                            <div className="absolute z-10 top-[80px] right-[40px] w-[300px] rounded-lg shadow-lg transit bg-black bg-opacity-60">
                                                 <div className="flex items-center gap-2 justify-center pt-10">
                                                     {
                                                         user.photoURL ?
                                                             <img className="w-[45px] h-[45px] mx-3 rounded-full " src={user.photoURL} /> :
                                                             <img className="w-[45px] h-[45px] mx-3 rounded-full border-blue-900" src="https://i.ibb.co/VC1vhmp/user.png" />
                                                     }
-                                                    <div>
+                                                    <div className="text-white">
                                                         <p className="font-extrabold">{user.displayName}</p>
                                                         <p className="text-sm">{user.email}</p>
                                                     </div>
                                                 </div>
                                                 <div className="divider pt-5"></div>
-                                                <div onClick={handleLogOut} className="flex items-center gap-2 ml-12 pt-4 pb-10 cursor-pointer">
+                                                <div onClick={handleLogOut} className="flex items-center gap-2 ml-12 pt-4 pb-10 cursor-pointer text-white">
                                                     <LuLogOut className="text-2xl" />
                                                     <a className="font-extrabold">Sign Out</a>
                                                 </div>
@@ -102,7 +102,7 @@ const Navbar = () => {
                                         </div>
                                         :
                                         <div>
-                                            <p onClick={() => setDropdown(!dropdown)}><IoIosArrowDown className="text-2xl cursor-pointer" /></p>
+                                            <p onClick={() => setDropdown(!dropdown)}><IoIosArrowDown className="text-2xl cursor-pointer text-white" /></p>
 
                                         </div>
                                 }
@@ -110,7 +110,7 @@ const Navbar = () => {
                         </div>
                         :
                         <Link to="/signin">
-                            <button className="btn text-base bg-gradient-to-r from-blue-500 to-cyan-500 text-white hover:scale-105 transition font-semibold">Sign In</button>
+                            <button className="btn text-base bg-gradient-to-r from-orange-500 to-yellow-400 text-white hover:scale-105 transition font-semibold">Sign In</button>
                         </Link>
                 }
             </div>
