@@ -20,7 +20,7 @@ const SignIn = () => {
     const location = useLocation();
     const navigate = useNavigate();
 
-    const from = location?.state.form?.pathname || "/";
+    const from = location?.state?.from?.pathname || "/";
 
     const handleSignin = e => {
         e.preventDefault();

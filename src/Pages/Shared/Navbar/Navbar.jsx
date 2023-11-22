@@ -6,10 +6,12 @@ import logo from "../../../assets/logo.png"
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import { LuLogOut } from "react-icons/lu";
 import { FaShoppingCart } from "react-icons/fa";
+import useCart from "../../../Hooks/useCart";
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
     const [dropdown, setDropdown] = useState(false);
+    const [cart] = useCart();
 
     const navLinks = <>
         <li> <NavLink to="/" className={({ isActive, isPending }) =>
@@ -22,7 +24,7 @@ const Navbar = () => {
         <li> <NavLink to="/dashboard/cart">
             <button className="btn rounded-full">
                 <FaShoppingCart className="text-2xl" />
-                <div className="badge badge-secondary">+0</div>
+                <div className="badge badge-secondary">+{cart.length}</div>
             </button>
         </NavLink>
         </li>
