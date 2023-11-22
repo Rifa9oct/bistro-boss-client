@@ -7,11 +7,11 @@ import slide2 from "../../assets/home/slide2.jpg"
 import slide3 from "../../assets/home/slide3.jpg"
 import slide4 from "../../assets/home/slide4.jpg"
 import slide5 from "../../assets/home/slide5.jpg"
-import SectionTitle from '../../components/Sectiontitle';
+import SectionTitle from '../../components/SectionTitle';
 
 const Category = () => {
     return (
-        <div className='my-20'>
+        <div className='my-20 max-w-[1320px] mx-auto'>
             <SectionTitle
             heading="ORDER ONLINE"
             subHeadng="From 11:00am to 10:00pm"
