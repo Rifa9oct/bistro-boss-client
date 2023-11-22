@@ -28,7 +28,7 @@ const Navbar = () => {
             .then(() => {
                 Swal.fire(
                     'Thank you',
-                    'Logout successfully',
+                    'Sign Out successfully',
                     'success'
                 )
             })

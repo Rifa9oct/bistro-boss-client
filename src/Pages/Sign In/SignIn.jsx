@@ -26,13 +26,13 @@ const SignIn = () => {
         const password = e.target.password.value;
         signinUser(email, password)
             .then(() => {
-                Swal.fire("Good job", "Signin successful", "success");
+                Swal.fire("Good job", "Sign In successful", "success");
                 setLogin(true);
                 navigate(location?.state ? location.state : "/")
                 e.target.reset();
             })
             .catch(error => {
-                Swal.fire("Signin Error", error.message, "error")
+                Swal.fire("Sign In Error", error.message, "error")
                 console.log(error);
             })
     }
@@ -120,7 +120,7 @@ const SignIn = () => {
                     </div>
 
                     <div className="form-control mt-6">
-                        <button type="submit" disabled={disable} className="btn text-white bg-gradient-to-r from-cyan-400 to-blue-400 shadow-lg shadow-blue-500/50 hover:bg-gradient-to-r hover:from-cyan-500 hover:to-blue-500">Sign In</button>
+                        <button type="submit" disabled={disable} className="btn border-0 text-white bg-gradient-to-r from-cyan-400 to-blue-400 shadow-lg shadow-blue-500/50 hover:bg-gradient-to-r hover:from-cyan-500 hover:to-blue-500">Sign In</button>
                     </div>
                 </form>
             </div>
