@@ -20,6 +20,8 @@ const SignIn = () => {
     const location = useLocation();
     const navigate = useNavigate();
 
+    const from = location?.state.form?.pathname || "/";
+
     const handleSignin = e => {
         e.preventDefault();
         const email = e.target.email.value;
@@ -28,7 +30,7 @@ const SignIn = () => {
             .then(() => {
                 Swal.fire("Good job", "Sign In successful", "success");
                 setLogin(true);
-                navigate(location?.state ? location.state : "/")
+                navigate(from,{replace:true})
                 e.target.reset();
             })
             .catch(error => {

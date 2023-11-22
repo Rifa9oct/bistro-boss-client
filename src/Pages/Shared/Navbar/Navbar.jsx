@@ -5,6 +5,7 @@ import { AuthContext } from "../../../AuthProvider/AuthContext";
 import logo from "../../../assets/logo.png"
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import { LuLogOut } from "react-icons/lu";
+import { FaShoppingCart } from "react-icons/fa";
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
@@ -16,6 +17,14 @@ const Navbar = () => {
         </li>
         <li> <NavLink to="/menu" className={({ isActive, isPending }) =>
             isActive ? "active rounded-lg  text-yellow-300 font-semibold" : isPending ? "pending" : ""}>OUR MENU</NavLink>
+        </li>
+        {/* cart */}
+        <li> <NavLink to="/dashboard/cart">
+            <button className="btn rounded-full">
+                <FaShoppingCart className="text-2xl" />
+                <div className="badge badge-secondary">+0</div>
+            </button>
+        </NavLink>
         </li>
         <li> <NavLink to="/order/salad" className={({ isActive, isPending }) =>
             isActive ? "active rounded-lg  text-yellow-300 font-semibold" : isPending ? "pending" : ""}>ORDER FOOD</NavLink>
@@ -56,7 +65,7 @@ const Navbar = () => {
             </div>
 
             <div className="navbar-center hidden lg:flex">
-                <ul className="text-white flex gap-8 font-semibold">
+                <ul className="text-white flex items-center gap-8 font-semibold">
                     {navLinks}
                 </ul>
             </div>
