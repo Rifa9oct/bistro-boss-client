@@ -110,7 +110,7 @@ const Navbar = () => {
                         </div>
                         :
                         <Link to="/signin">
-                            <button className="btn text-base bg-gradient-to-r from-orange-500 to-yellow-400 text-white hover:scale-105 transition font-semibold">Sign In</button>
+                            <button className="btn rounded-full px-8 border-0 text-base bg-gradient-to-r from-orange-500 to-yellow-400 text-white hover:scale-105 transition font-semibold">Sign In</button>
                         </Link>
                 }
             </div>

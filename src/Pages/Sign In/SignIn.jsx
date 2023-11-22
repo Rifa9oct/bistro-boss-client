@@ -1,10 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import video from "../../assets/videos/signin.mp4"
-import { MdEmail } from "react-icons/md";
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { FcGoogle } from 'react-icons/fc';
-import { BiSolidLock } from "react-icons/bi";
-import { TbCaptureFilled } from "react-icons/tb";
 import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
 import { AuthContext } from "../../AuthProvider/AuthContext";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -65,15 +62,15 @@ const SignIn = () => {
     }
 
     return (
-        <div className="flex items-center gap-20 justify-center mt-7 mb-10 p-5 lg:p-0">
-            <video className="hidden lg:block" autoPlay loop muted>
+        <div className="flex items-center gap-20 justify-cente my-7 p-5 lg:p-0">
+            <video className="hidden lg:block ml-12" autoPlay loop muted>
                 <source src={video} type="video/mp4" />
             </video>
 
             <div className="rounded-2xl border-gradient w-[500px] p-1">
                 <h1 className="text-5xl text-black text-center font-extrabold my-5">SIGN IN</h1>
 
-                <p className="text-sm font-bold text-center my-2">New here? <Link to="/signup"><span className="header text-base">Create a New Account</span></Link></p>
+                <p className="text-sm font-bold text-center my-2">New here ? <Link to="/signup"><span className="header text-base">Create a New Account</span></Link></p>
                 {/* continue with google */}
                 <div onClick={handleGoogleSignIn} className="flex items-center justify-center gap-4 font-semibold text-center">
                     <p className="text-sm font-bold">Sign in with</p>
@@ -88,8 +85,7 @@ const SignIn = () => {
                             <span className="label-text">Email</span>
                         </label>
                         <div className="relative">
-                            <input type="email" name="email" placeholder="your email" className="input pl-11 input-bordered input-info w-full" required />
-                            <span className="absolute top-4 left-4"> <MdEmail className="text-xl" /></span>
+                            <input type="email" name="email" placeholder="your email" className="input input-sm input-info w-full" required />
                         </div>
                     </div>
 
@@ -100,9 +96,8 @@ const SignIn = () => {
                         <div className="relative">
                             <input
                                 type={showPassword ? "text" : "password"}
-                                name="password" placeholder="Password" className="input pl-11 w-full input-info" required />
-                            <span className="absolute top-3 left-4"><BiSolidLock className="text-xl" /></span>
-                            <span className="absolute top-4 right-4" onClick={() => setShowPassword(!showPassword)}>
+                                name="password" placeholder="Password" className="input input-sm w-full input-info" required />
+                            <span className="absolute top-2 right-4" onClick={() => setShowPassword(!showPassword)}>
                                 {
                                     showPassword ? <FaEye></FaEye> : <FaEyeSlash></FaEyeSlash>
                                 }
@@ -120,8 +115,7 @@ const SignIn = () => {
                             <LoadCanvasTemplate />
                         </label>
                         <div className="relative">
-                            <input onBlur={handleValidateCaptcha} type="text" name="captcha" placeholder="type the text above" className="input pl-11 input-bordered input-info w-full" required />
-                            <span className="absolute top-4 left-4"> <TbCaptureFilled className="text-xl" /></span>
+                            <input onBlur={handleValidateCaptcha} type="text" name="captcha" placeholder="type the text above" className="input input-sm input-info w-full" required />
                         </div>
                     </div>
 
@@ -129,10 +123,6 @@ const SignIn = () => {
                         <button type="submit" disabled={disable} className="btn text-white bg-gradient-to-r from-cyan-400 to-blue-400 shadow-lg shadow-blue-500/50 hover:bg-gradient-to-r hover:from-cyan-500 hover:to-blue-500">Sign In</button>
                     </div>
                 </form>
-
-
-
-
             </div>
         </div>
     );
