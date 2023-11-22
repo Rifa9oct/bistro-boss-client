@@ -27,10 +27,10 @@ const Menu = () => {
                 >
                 </SectionTitle>
                 <MenuCategory butnTitle="ORDER YOUR FAVOURITE FOOD" items={offered}></MenuCategory>
-                <MenuCategory butnTitle="ORDER YOUR FAVOURITE FOOD" items={dessert} title="DESSERTS" img={dessertImg}></MenuCategory>
-                <MenuCategory butnTitle="ORDER YOUR FAVOURITE FOOD" items={pizza} title="PIZZA" img={pizzaImg}></MenuCategory>
-                <MenuCategory butnTitle="ORDER YOUR FAVOURITE FOOD" items={salad} title="SALADS" img={saladImg}></MenuCategory>
-                <MenuCategory butnTitle="ORDER YOUR FAVOURITE FOOD" items={soup} title="SOUPS" img={soupImg}></MenuCategory>
+                <MenuCategory butnTitle="ORDER YOUR FAVOURITE FOOD" items={dessert} title="dessert" img={dessertImg}></MenuCategory>
+                <MenuCategory butnTitle="ORDER YOUR FAVOURITE FOOD" items={pizza} title="pizza" img={pizzaImg}></MenuCategory>
+                <MenuCategory butnTitle="ORDER YOUR FAVOURITE FOOD" items={salad} title="salad" img={saladImg}></MenuCategory>
+                <MenuCategory butnTitle="ORDER YOUR FAVOURITE FOOD" items={soup} title="soup" img={soupImg}></MenuCategory>
             </div>
         </div>
     );

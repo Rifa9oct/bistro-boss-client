@@ -1,7 +1,8 @@
+import { Link } from "react-router-dom";
 import Cover from "../Shared/Cover/Cover";
 import MenuItem from "../Shared/MenuItem/MenuItem";
 
-const MenuCategory = ({ items, title, img,butnTitle}) => {
+const MenuCategory = ({ items, title, img, butnTitle }) => {
     return (
         <div>
             <div className="my-16">{title && <Cover img={img} title={title}></Cover>}</div>
@@ -11,9 +12,15 @@ const MenuCategory = ({ items, title, img,butnTitle}) => {
                         key={item._id} item={item}></MenuItem>)
                 }
             </div>
-            <div className="flex justify-center">
-                <button className="btn btn-outline border-0 border-b-4">{butnTitle}</button>
-            </div>
+            {
+                butnTitle === "View Full  Menu" ?
+                    <div className="flex justify-center">
+                        <Link to="/menu" ><button className="btn btn-outline border-0 border-b-4">{butnTitle}</button></Link>
+                    </div> :
+                    <div className="flex justify-center">
+                        <Link to={`/order/${title}`} ><button className="btn btn-outline border-0 border-b-4">{butnTitle}</button></Link>
+                    </div>
+            }
         </div>
     );
 };

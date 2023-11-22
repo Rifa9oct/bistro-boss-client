@@ -17,8 +17,8 @@ const Navbar = () => {
         <li> <NavLink to="/menu" className={({ isActive, isPending }) =>
             isActive ? "active rounded-lg  text-yellow-300 font-semibold" : isPending ? "pending" : ""}>OUR MENU</NavLink>
         </li>
-        <li> <NavLink to="/shop" className={({ isActive, isPending }) =>
-            isActive ? "active rounded-lg  text-yellow-300 font-semibold" : isPending ? "pending" : ""}>OUR SHOP</NavLink>
+        <li> <NavLink to="/order/salad" className={({ isActive, isPending }) =>
+            isActive ? "active rounded-lg  text-yellow-300 font-semibold" : isPending ? "pending" : ""}>ORDER FOOD</NavLink>
         </li>
     </>
 
