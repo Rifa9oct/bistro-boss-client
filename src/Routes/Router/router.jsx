@@ -3,7 +3,6 @@ import {
 } from "react-router-dom";
 import Root from "../../Layout/Root";
 import Home from "../../Pages/Home/Home";
-import SignIn from "../../Pages/Sign in/SignIn";
 import Signup from "../../Pages/Sign Up/SignUp";
 import Menu from "../../Pages/Menu/Menu";
 import Order from "../../Pages/Order Food/Order";
@@ -11,6 +10,8 @@ import Dashboard from "../../Layout/Dashboard";
 import Cart from "../../Pages/Dashboard/Cart";
 import PrivateRoute from "../../Routes/PrivateRoute/PrivateRoute"
 import AllUsers from "../../Pages/Dashboard/AllUsers";
+import AdminRoute from "../AdminRoute/AdminRoute";
+import SignIn from "../../Pages/Sign In/SignIn";
 
 
 export const router = createBrowserRouter([
@@ -52,7 +53,7 @@ export const router = createBrowserRouter([
       //admin routes
       {
         path: "users",
-        element: <AllUsers></AllUsers>
+        element: <AdminRoute><AllUsers></AllUsers></AdminRoute>
       },
     ]
   },

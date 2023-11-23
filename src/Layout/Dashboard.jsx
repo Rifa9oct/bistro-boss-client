@@ -47,7 +47,7 @@ const Dashboard = () => {
                                 </li>
                                 <li><NavLink to="/dashboard/reservation">
                                     <FaCalendar className="text-xl"></FaCalendar>
-                                    Reservation ({cart.length})</NavLink>
+                                    Reservation</NavLink>
                                 </li>
                                 <li><NavLink to="/dashboard/cart">
                                     <FaShoppingCart className="text-xl"></FaShoppingCart>

@@ -74,9 +74,9 @@ const Signup = () => {
                 <p className="text-sm font-bold text-center my-2">Already Have an Account ? <Link to="/signin"><span className="header text-base">Please Sign In</span></Link></p>
 
                 {/* continue with google */}
-                <div onClick={handleGoogleSignIn} className="flex items-center justify-center gap-4 font-semibold text-center">
+                <div className="flex items-center justify-center gap-4 font-semibold text-center">
                     <p className="text-sm font-bold">Sign up with</p>
-                    <p className="flex items-center gap-1 border-2 py-2 px-3 rounded-lg border-cyan-400 hover:text-blue-500 cursor-pointer"><FcGoogle className="text-2xl"></FcGoogle>Google</p>
+                    <button onClick={handleGoogleSignIn} className="flex items-center gap-1 border-2 py-2 px-3 rounded-lg border-cyan-400 hover:text-blue-500 cursor-pointer"><FcGoogle className="text-2xl"></FcGoogle>Google</button>
                 </div>
                 <div className="divider text-black font-bold px-10">or</div>
 

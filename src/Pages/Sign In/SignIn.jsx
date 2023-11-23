@@ -1,8 +1,8 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext,useState } from "react";
 import video from "../../assets/videos/signin.mp4"
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { FcGoogle } from 'react-icons/fc';
-import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
+// import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
 import { AuthContext } from "../../AuthProvider/AuthContext";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
@@ -10,12 +10,12 @@ import useAxiosPublic from "../../Hooks/useAxiosPublic";
 
 const SignIn = () => {
     const [showPassword, setShowPassword] = useState(false);
-    const [disable, setDisable] = useState(true)
+    // const [disable, setDisable] = useState(true)
 
     //react-simple-captcha
-    useEffect(() => {
-        loadCaptchaEnginge(6);
-    }, [])
+    // useEffect(() => {
+    //     loadCaptchaEnginge(6);
+    // }, [])
 
     const { signinUser, setLogin, signInWithGoogle } = useContext(AuthContext);
     const location = useLocation();
@@ -32,7 +32,7 @@ const SignIn = () => {
             .then(() => {
                 Swal.fire("Good job", "Sign In successful", "success");
                 setLogin(true);
-                navigate(from,{replace:true})
+                navigate(from, { replace: true })
                 e.target.reset();
             })
             .catch(error => {
@@ -43,35 +43,34 @@ const SignIn = () => {
 
     const handleGoogleSignIn = () => {
         signInWithGoogle()
-        .then(result => {
-            console.log(result.user)
-            const userInfo = {
-                name: result.user?.displayName,
-                email: result.user?.email
-            }
-            axiosPublic.post("/users",userInfo)
-            .then(res =>{
-                console.log(res.data);
+            .then(result => {
+                console.log(result.user)
+                const userInfo = {
+                    name: result.user?.displayName,
+                    email: result.user?.email
+                }
+                axiosPublic.post("/users", userInfo)
+                    .then(res => {
+                        console.log(res.data);
+                    })
+                navigate(from, { replace: true })
             })
-            navigate(from,{replace:true})
-        })
-        .catch(error => {
-            console.log(error)
-        })
+            .catch(error => {
+                console.log(error)
+            })
     }
 
 
     //react-simple-captcha
-    const handleValidateCaptcha = e => {
-        const user_captcha_value = e.target.value;
-        if (validateCaptcha(user_captcha_value) == true) {
-            setDisable(false);
-        }
-
-        else {
-            setDisable(true);
-        }
-    }
+    // const handleValidateCaptcha = e => {
+    //     const user_captcha_value = e.target.value;
+    //     if (validateCaptcha(user_captcha_value) === true) {
+    //         setDisable(false);
+    //     }
+    //     else {
+    //         setDisable(true);
+    //     }
+    // }
 
     return (
         <div className="flex items-center gap-20 justify-cente my-7 p-5 lg:p-0">
@@ -84,9 +83,9 @@ const SignIn = () => {
 
                 <p className="text-sm font-bold text-center my-2">New here ? <Link to="/signup"><span className="header text-base">Create a New Account</span></Link></p>
                 {/* continue with google */}
-                <div onClick={handleGoogleSignIn} className="flex items-center justify-center gap-4 font-semibold text-center">
+                <div className="flex items-center justify-center gap-4 font-semibold text-center">
                     <p className="text-sm font-bold">Sign in with</p>
-                    <p className="flex items-center gap-1 border-2 py-2 px-3 rounded-lg border-cyan-400 hover:text-blue-500 cursor-pointer"><FcGoogle className="text-2xl"></FcGoogle>Google</p>
+                    <button onClick={handleGoogleSignIn} className="flex items-center gap-1 border-2 py-2 px-3 rounded-lg border-cyan-400 hover:text-blue-500 cursor-pointer"><FcGoogle className="text-2xl"></FcGoogle>Google</button>
                 </div>
 
                 <div className="divider text-black font-bold px-10">or</div>
@@ -121,18 +120,19 @@ const SignIn = () => {
                         <a href="#" className="text-sm text-gray-600 link link-hover">Forgot password?</a>
                     </label>
 
-                     {/* captcha */}
+                    {/* captcha
                     <div className="form-control">
                         <label className="label pt-0">
                             <LoadCanvasTemplate />
                         </label>
                         <div className="relative">
-                            <input onBlur={handleValidateCaptcha} type="text" name="captcha" placeholder="type the text above" className="input input-sm input-info w-full" required />
+                            <input onBlur={handleValidateCaptcha} type="text" name="captcha" placeholder="type the text above" className="input input-sm input-info w-full" />
                         </div>
-                    </div>
+                    </div> */}
 
                     <div className="form-control mt-6">
-                        <button type="submit" disabled={disable} className="btn border-0 text-white bg-gradient-to-r from-cyan-400 to-blue-400 shadow-lg shadow-blue-500/50 hover:bg-gradient-to-r hover:from-cyan-500 hover:to-blue-500">Sign In</button>
+                        {/* disabled={disable} */}
+                        <button type="submit" className="btn border-0 text-white bg-gradient-to-r from-cyan-400 to-blue-400 shadow-lg shadow-blue-500/50 hover:bg-gradient-to-r hover:from-cyan-500 hover:to-blue-500">Sign In</button>
                     </div>
                 </form>
             </div>
