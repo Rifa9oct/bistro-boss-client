@@ -23,7 +23,8 @@ const Navbar = () => {
         {/* cart */}
         <li> <NavLink to="/dashboard/cart">
             <button className="btn rounded-full">
-                <FaShoppingCart className="text-2xl" />
+                <FaShoppingCart className="text-2xl text-white
+                " />
                 <div className="badge badge-secondary">+{cart.length}</div>
             </button>
         </NavLink>

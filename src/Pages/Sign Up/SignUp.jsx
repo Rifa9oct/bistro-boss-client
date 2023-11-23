@@ -3,28 +3,44 @@ import video from "../../assets/videos/signup.mp4"
 import { AuthContext } from "../../AuthProvider/AuthContext";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useState } from "react";
-import { Link, Navigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
-import { useForm} from "react-hook-form";
-import { MdError} from "react-icons/md";
+import { useForm } from "react-hook-form";
+import { MdError } from "react-icons/md";
 import Swal from "sweetalert2";
 import { updateProfile } from "firebase/auth";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
 
 const Signup = () => {
-    const { signInWithGoogle, createUser} = useContext(AuthContext);
+    const { signInWithGoogle, createUser } = useContext(AuthContext);
+    const axiosPublic = useAxiosPublic();
     const [showPassword, setShowPassword] = useState(false);
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
-    
-    const onSubmit = data =>{
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    const from = location?.state?.from?.pathname || "/";
+
+    const onSubmit = data => {
         createUser(data.email, data.password)
             .then(result => {
-                console.log(result.user);
-                Swal.fire("Great!", "Sign up successful", "success");
-                updateProfile(result.user, {
-                    displayName: data.name,
-                    photoURL: data.photoUrl
-                })
-                reset();  
+                // console.log(result.user);
+                const userInfo = {
+                    name: data.name,
+                    email: data.email
+                }
+                axiosPublic.post("/users", userInfo)
+                    .then(res => {
+                        if (res.data.insertedId) {
+                            reset();
+                            Swal.fire("Great!", "User created successfully", "success");
+                            updateProfile(result.user, {
+                                displayName: data.name,
+                                photoURL: data.photoUrl
+                            })
+                            navigate("/");
+                        }
+                    })
             })
             .catch(error => {
                 Swal.fire("Opps!", error.message, "error");
@@ -35,7 +51,15 @@ const Signup = () => {
         signInWithGoogle()
             .then(result => {
                 console.log(result.user)
-                Navigate(location?.state ? location.state : "/")
+                const userInfo = {
+                    name: result.user?.displayName,
+                    email: result.user?.email
+                }
+                axiosPublic.post("/users",userInfo)
+                .then(res =>{
+                    console.log(res.data);
+                })
+                navigate(from,{replace:true})
             })
             .catch(error => {
                 console.log(error)
@@ -64,8 +88,8 @@ const Signup = () => {
                         </label>
                         <div>
                             <input type="text" {...register("name", { required: true })}
-                            name="name" placeholder="your name" className="input input-sm input-info w-full"/>
-                             {errors.name && <span className="text-sm text-red-500"><MdError className="text-lg inline"/> Name field is required.</span>}
+                                name="name" placeholder="your name" className="input input-sm input-info w-full" />
+                            {errors.name && <span className="text-sm text-red-500"><MdError className="text-lg inline" /> Name field is required.</span>}
                         </div>
                     </div>
 
@@ -74,7 +98,7 @@ const Signup = () => {
                             <span className="label-text">Photo URL</span>
                         </label>
                         <div>
-                            <input type="text" {...register("photo url")} name="photo url" placeholder="your photo url" className="input input-sm input-info w-full"/>
+                            <input type="text" {...register("photo url")} name="photo url" placeholder="your photo url" className="input input-sm input-info w-full" />
                         </div>
                     </div>
 
@@ -83,8 +107,8 @@ const Signup = () => {
                             <span className="label-text">Email</span>
                         </label>
                         <div>
-                            <input type="email" {...register("email", { required: true })} name="email" placeholder="your email" className="input input-sm input-info w-full"/>
-                            {errors.email && <span className="text-sm text-red-500"><MdError className="text-lg inline"/> Email address is required.</span>}
+                            <input type="email" {...register("email", { required: true })} name="email" placeholder="your email" className="input input-sm input-info w-full" />
+                            {errors.email && <span className="text-sm text-red-500"><MdError className="text-lg inline" /> Email address is required.</span>}
                         </div>
                     </div>
 
@@ -95,12 +119,12 @@ const Signup = () => {
                         <div className="relative">
                             <input
                                 type={showPassword ? "text" : "password"}
-                                {...register("password", { required: true, minLength:6, maxLength: 20, pattern:/(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/})}
-                                name="password" placeholder="Password" className="input input-sm w-full input-info"/>
-                                {errors.password?.type  === "required" &&  <p className="text-sm text-red-500"><MdError className="text-lg inline"/> Password is required.</p>}
-                                {errors.password?.type  === "minLength" && <p className="text-sm text-red-500"><MdError className="text-lg inline"/> Password must be 6 characters.</p>}
-                                {errors.password?.type  === "maxLength" && <p className="text-sm text-red-500"><MdError className="text-lg inline"/> Password must be less than 20 characters.</p>}
-                                {errors.password?.type  === "pattern" && <p className="text-sm text-red-500"><MdError className="text-lg inline"/> Password must have one upper case, one lower case, one number, one special character.</p>}
+                                {...register("password", { required: true, minLength: 6, maxLength: 20, pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/ })}
+                                name="password" placeholder="Password" className="input input-sm w-full input-info" />
+                            {errors.password?.type === "required" && <p className="text-sm text-red-500"><MdError className="text-lg inline" /> Password is required.</p>}
+                            {errors.password?.type === "minLength" && <p className="text-sm text-red-500"><MdError className="text-lg inline" /> Password must be 6 characters.</p>}
+                            {errors.password?.type === "maxLength" && <p className="text-sm text-red-500"><MdError className="text-lg inline" /> Password must be less than 20 characters.</p>}
+                            {errors.password?.type === "pattern" && <p className="text-sm text-red-500"><MdError className="text-lg inline" /> Password must have one upper case, one lower case, one number, one special character.</p>}
 
 
                             <span className="absolute top-2 right-4" onClick={() => setShowPassword(!showPassword)}>

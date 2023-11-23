@@ -4,11 +4,13 @@ import {
 import Root from "../../Layout/Root";
 import Home from "../../Pages/Home/Home";
 import SignIn from "../../Pages/Sign in/SignIn";
-import Signup from "../../Pages/Sign Up/Signup";
+import Signup from "../../Pages/Sign Up/SignUp";
 import Menu from "../../Pages/Menu/Menu";
 import Order from "../../Pages/Order Food/Order";
 import Dashboard from "../../Layout/Dashboard";
 import Cart from "../../Pages/Dashboard/Cart";
+import PrivateRoute from "../../Routes/PrivateRoute/PrivateRoute"
+
 
 export const router = createBrowserRouter([
   {
@@ -39,7 +41,7 @@ export const router = createBrowserRouter([
   },
   {
     path: "dashboard",
-    element: <Dashboard></Dashboard>,
+    element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
     children: [
       {
         path: "cart",

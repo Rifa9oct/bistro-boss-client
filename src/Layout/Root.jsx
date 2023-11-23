@@ -1,11 +1,13 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import Navbar from "../Pages/Shared/Navbar/Navbar";
 
-
 const Root = () => {
+    const location = useLocation();
+    const noHeader = location.pathname.includes('signin') || 
+    location.pathname.includes('signup');
     return (
         <div>
-            <Navbar></Navbar>
+            {noHeader || <Navbar></Navbar>}
             <Outlet></Outlet>
         </div>
     );
