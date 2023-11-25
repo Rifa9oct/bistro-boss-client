@@ -12,6 +12,8 @@ import PrivateRoute from "../../Routes/PrivateRoute/PrivateRoute"
 import AllUsers from "../../Pages/Dashboard/AllUsers";
 import AdminRoute from "../AdminRoute/AdminRoute";
 import SignIn from "../../Pages/Sign In/SignIn";
+import TanStackTable from "../../Pages/TanStackTable/TanStackTable";
+import axios from "axios";
 
 
 export const router = createBrowserRouter([
@@ -30,6 +32,14 @@ export const router = createBrowserRouter([
       {
         path: "/signup",
         element: <Signup></Signup>
+      },
+      {
+        path: "/table",
+        element: <TanStackTable></TanStackTable>,
+        loader: async()=>{
+          const res = await axios.get("http://localhost:5000/menus");
+          return res.data;
+        }
       },
       {
         path: "/menu",

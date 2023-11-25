@@ -44,7 +44,7 @@ const Cart = () => {
                 <h2 className="text-4xl">Total Price: {totalPrice}</h2>
                 <button className="btn btn-secondary hover:scale-110">Pay</button>
             </div>
-            <div className="overflow-x-auto mt-8 mb-20 mx-20">
+            <div className=" mt-8 mb-20 mx-20">
                 <table className="table">
                     <thead className="bg-gray-200">
                         <tr className="text-xl">

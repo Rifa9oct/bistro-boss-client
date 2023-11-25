@@ -20,6 +20,9 @@ const Navbar = () => {
         <li> <NavLink to="/menu" className={({ isActive, isPending }) =>
             isActive ? "active rounded-lg  text-yellow-300 font-semibold" : isPending ? "pending" : ""}>OUR MENU</NavLink>
         </li>
+        <li> <NavLink to="/table" className={({ isActive, isPending }) =>
+            isActive ? "active rounded-lg  text-yellow-300 font-semibold" : isPending ? "pending" : ""}>Tanstack Table</NavLink>
+        </li>
         {/* cart */}
         <li> <NavLink to="/dashboard/cart">
             <button className="btn rounded-full">
